@@ -21,16 +21,6 @@
 **/*.eslintrc.js
 **/*.eslintrc.json
 
-# TypeScriptコンパイル結果
-*.js
-**/*.jsx
-*.js.map
-*.d.ts
 # OS関連
 **/.DS_Store
 **/Thumbs.db
-# その他の一般的な無視項目
-**/*.log
-**/*.tmp
-**/*.bak
-**/*.swp
