@@ -18,7 +18,8 @@
 **/*.editorconfig
 **/*.prettierrc
 **/*.browserslistrc
-**/*.eslintrc.{js|json}
+**/*.eslintrc.js
+**/*.eslintrc.json
 
 # TypeScriptコンパイル結果
 *.js
