@@ -1,0 +1,36 @@
+# ChatGPTに書いてもらったら.gitignoreファイル
+# Node関連
+## サブディレクトリも見るように変更
+**/node_modules/
+**/npm-debug.log
+
+# wrangler
+**/.wrangler/
+
+# dotfiles
+*.editorconfig
+*.prettierrc
+*.browserslistrc
+*.eslintrc.js
+
+# dotenv
+.env
+.dev.vars
+
+# TypeScriptコンパイル結果
+*.js
+*.jsx
+*.js.map
+*.d.ts
+# JetBrains IDE関連
+.idea/
+*.iml
+# OS関連
+.DS_Store
+Thumbs.db
+# その他の一般的な無視項目
+*.log
+*.tmp
+*.bak
+*.swp
+*~
