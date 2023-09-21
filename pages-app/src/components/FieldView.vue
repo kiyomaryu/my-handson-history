@@ -119,7 +119,7 @@ export default defineComponent({
 		// 近隣スポット一覧を取得するメソッド
 		// axiosでスポット一覧を取得するAPIにアクセスしている
 		async getLocations() {
-			if (this.lat = '' && this.lon == '') return;
+			if (this.lat == '' && this.lon == '') return;
 
 			const result = await axios.get(`${process.env.VUE_APP_ARTICLE_API}/nearby/${this.lat}/${this.lon}`)
 			this.locations = result.data.locations
