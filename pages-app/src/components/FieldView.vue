@@ -11,7 +11,7 @@
 		<b-row v-if="lat && lon">
 			<!-- 緯度経度を表示 -->
 			<b-col sm="1"><b-icon-map></b-icon-map></b-col>
-			<b-col>Lat: {{lat}}} Lon:{{lon}}</b-col>
+			<b-col>Lat: {{lat}} Lon:{{lon}}</b-col>
 			<!-- スポット一覧の表示 -->
 			<b-col>
 				<b-form-select v-model="location" :options="locations"></b-form-select>
@@ -120,7 +120,6 @@ export default defineComponent({
 		// axiosでスポット一覧を取得するAPIにアクセスしている
 		async getLocations() {
 			if (this.lat == '' && this.lon == '') return;
-
 			const result = await axios.get(`${process.env.VUE_APP_ARTICLE_API}/nearby/${this.lat}/${this.lon}`)
 			this.locations = result.data.locations
 			this.locations.unshift('---')

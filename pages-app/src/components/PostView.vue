@@ -21,11 +21,13 @@
       <b-row v-if="post.lat && post.lon">
           <b-col sm="1"></b-col>
           <b-col>
+              <!-- TDOO debug -->
+              Lat: {{post.lat}} Lon: {{post.lon}}
               <iframe
-                height="100px"
+                height="200px"
                 width="100%"
                 frameborder="0" style="border:0"
-                :src="`https://www.google.com/maps/embed/v1/place?key=${maps_key}$zoom=15&${post.lat},${post.lon}`">
+                :src="`https://www.google.com/maps/embed/v1/place?key=${maps_key}&zoom=15&q=${post.lat},${post.lon}`">
               </iframe>
           </b-col>
       </b-row>
@@ -46,7 +48,7 @@
 import { defineComponent } from 'vue';
 import axios from "axios";
 import { DateTime } from 'luxon';
-import {Post, Post as PostType} from '../types/Post'
+import { Post, Post as PostType} from '../types/Post'
 
 export default defineComponent({
     name: 'PostView',
@@ -56,12 +58,16 @@ export default defineComponent({
     data: () => {
         return {
             post: {} as PostType,
-            maps_key: process.env.VUE_APP_MAPS_KEY
+            maps_key: process.env.VUE_APP_MAPS_API_KEY
         }
     },
     mounted: async function () {
-        const response = await axios.get(process.env.VUE_APP_ARTICLE_API + '/post/' + this.id);
-        this.post = response.data.dasta as PostType;
+        try{
+            const response = await axios.get(process.env.VUE_APP_ARTICLE_API + '/post/' + this.id);
+            this.post = response.data.data as PostType;
+        } catch (error) {
+            console.error('Error fetching post:', error);
+        }
     },
     methods: {
         unixtodate: function (date: number): string {
